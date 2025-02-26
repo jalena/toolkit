@@ -1,0 +1,18 @@
+services:
+  tools:
+    image: jalena/toolkit:latest
+    container_name: toolkit
+    restart: always
+    network_mode: host
+    volumes:
+      - ./conf.d/frps.toml:/etc/frps.toml
+    deploy:
+      resources:
+        limits:
+          cpus: '0.20'
+          memory: 100M
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "10"
